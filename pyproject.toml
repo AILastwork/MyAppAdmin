@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ad-admin-exe"
+version = "0.16.7"
+description = "Windows desktop admin tool for AD, 1C/V8i, Yandex 360 and printer address books."
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+    "ldap3>=2.9,<3",
+    "PySide6>=6.7,<7",
+    "requests>=2.31,<3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+]
+build = [
+    "pyinstaller>=6",
+]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MyAppAdmin - первый запуск</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #081117;
+      --panel: #10202a;
+      --panel-2: #142c36;
+      --line: #2c4a58;
+      --text: #dce8ee;
+      --muted: #9db2bf;
+      --accent: #54c9bb;
+      --accent-2: #80bfff;
+      --ok: #5bd18a;
+      --warn: #ffc66d;
+      --danger: #ff8d9d;
+      --shadow: 0 18px 50px rgba(0, 0, 0, .3);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font: 16px/1.6 "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 0%, rgba(84, 201, 187, .16), transparent 28rem),
+        radial-gradient(circle at 90% 10%, rgba(128, 191, 255, .12), transparent 26rem),
+        var(--bg);
+    }
+    a { color: var(--accent-2); }
+    code {
+      padding: .15rem .4rem;
+      color: #c9fff6;
+      background: #071015;
+      border: 1px solid #213943;
+      border-radius: .35rem;
+      word-break: break-word;
+    }
+    .wrap { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    header { padding: 70px 0 40px; }
+    .hero {
+      padding: 42px;
+      background: linear-gradient(135deg, rgba(20, 44, 54, .96), rgba(12, 27, 36, .96));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+    .eyebrow {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    h1 { max-width: 800px; margin: 10px 0 12px; font-size: clamp(36px, 6vw, 66px); line-height: 1.05; }
+    .subtitle { max-width: 800px; margin: 0; color: var(--muted); font-size: 20px; }
+    .badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .badge {
+      padding: 8px 12px;
+      color: #dffbf5;
+      background: rgba(84, 201, 187, .1);
+      border: 1px solid rgba(84, 201, 187, .35);
+      border-radius: 999px;
+      font-weight: 700;
+    }
+    main { padding-bottom: 70px; }
+    section {
+      margin: 24px 0;
+      padding: 30px;
+      background: rgba(16, 32, 42, .94);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 12px 34px rgba(0, 0, 0, .18);
+    }
+    h2 { margin: 0 0 8px; font-size: 28px; }
+    h3 { margin: 0 0 5px; color: #fff; }
+    .section-lead { margin-top: 0; color: var(--muted); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 14px; }
+    .card {
+      padding: 18px;
+      background: #0c1921;
+      border: 1px solid #263f4b;
+      border-radius: 13px;
+    }
+    .step-number {
+      display: inline-grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 10px;
+      color: #06110f;
+      background: linear-gradient(135deg, var(--accent), #88ebc2);
+      border-radius: 10px;
+      font-weight: 900;
+    }
+    .callout {
+      margin: 16px 0 0;
+      padding: 15px 18px;
+      border-left: 4px solid var(--accent);
+      background: rgba(84, 201, 187, .08);
+      border-radius: 8px;
+    }
+    .callout.warn { border-color: var(--warn); background: rgba(255, 198, 109, .08); }
+    .callout.danger { border-color: var(--danger); background: rgba(255, 141, 157, .08); }
+    table { width: 100%; border-collapse: collapse; margin-top: 14px; }
+    th, td { padding: 12px; text-align: left; border-bottom: 1px solid #29434f; vertical-align: top; }
+    th { color: #fff; background: #142934; }
+    .checklist { list-style: none; padding: 0; }
+    .checklist li { margin: 8px 0; padding-left: 28px; position: relative; }
+    .checklist li::before { content: "✓"; position: absolute; left: 0; color: var(--ok); font-weight: 900; }
+    footer { padding: 24px 0 48px; color: var(--muted); text-align: center; }
+    @media (max-width: 640px) {
+      .hero, section { padding: 22px; border-radius: 14px; }
+      header { padding-top: 24px; }
+      .subtitle { font-size: 17px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <div class="hero">
+      <div class="eyebrow">OSNOVA · инструкция администратора</div>
+      <h1>Первый запуск MyAppAdmin</h1>
+      <p class="subtitle">Пошаговая подготовка нового Windows-хоста: от запуска EXE до безопасной проверки AD, Yandex 360, 1C и принтеров.</p>
+      <div class="badges">
+        <span class="badge">Версия 0.16.7</span>
+        <span class="badge">Windows x64</span>
+        <span class="badge">Python не требуется</span>
+        <span class="badge">Работа в домене OSNOVA</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section>
+      <h2>Что должно быть рядом</h2>
+      <p class="section-lead">Для обычного запуска достаточно EXE. Остальные файлы помогают настроить и проверить приложение.</p>
+      <div class="grid">
+        <div class="card"><h3>MyAppAdmin.exe</h3><p>Готовое приложение. Все Python-библиотеки уже находятся внутри.</p></div>
+        <div class="card"><h3>MyAppAdmin_First_Run.html</h3><p>Эта инструкция. Работает локально и не требует интернета.</p></div>
+        <div class="card"><h3>printers.json</h3><p>Общий список МФУ. По умолчанию приложение ищет его в общей папке MyAppAdmin.</p></div>
+      </div>
+      <div class="callout warn"><b>Не запускайте EXE прямо из ZIP-архива.</b> Сначала распакуйте комплект в локальную папку, например <code>C:\MyAppAdmin</code>.</div>
+    </section>
+
+    <section>
+      <h2>Порядок первого запуска</h2>
+      <p class="section-lead">Выполните шаги по порядку. Это быстрее, чем возвращаться к настройкам после первой ошибки.</p>
+      <div class="grid">
+        <div class="card"><div class="step-number">1</div><h3>Запустите EXE</h3><p>Откройте <code>MyAppAdmin.exe</code> под своей доменной учетной записью. Повышение до локального администратора Windows обычно не требуется.</p></div>
+        <div class="card"><div class="step-number">2</div><h3>Разрешите доверенный файл</h3><p>Если SmartScreen показывает предупреждение, убедитесь, что файл получен из доверенного внутреннего источника, затем выберите «Подробнее» и «Выполнить в любом случае».</p></div>
+        <div class="card"><div class="step-number">3</div><h3>Проверьте версию</h3><p>В заголовке окна и разделе «Описание программы → Версии» должна быть указана версия <b>0.16.7</b> или новее.</p></div>
+        <div class="card"><div class="step-number">4</div><h3>Откройте настройки</h3><p>Раздел виден только текущему Windows-пользователю из Domain Admins. При первом запуске настройку выполняет доменный администратор.</p></div>
+        <div class="card"><div class="step-number">5</div><h3>Проверьте подключения</h3><p>Заполните LDAPS-сервер, учетную запись чтения AD и секреты. Проверьте пути Yandex, принтеров, шаблонов 1C и базовый URL GLPI.</p></div>
+        <div class="card"><div class="step-number">6</div><h3>Откройте главную</h3><p>Карточки общих файлов должны показывать доступность. Недоступный путь сначала проверяется в Проводнике под текущим Windows-пользователем.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Общая папка по умолчанию</h2>
+      <p>Приложение использует корень:</p>
+      <p><code>\\osnova.local\fs\IT\MyAppAdmin</code></p>
+      <table>
+        <thead><tr><th>Назначение</th><th>Путь по умолчанию</th></tr></thead>
+        <tbody>
+          <tr><td>Шаблоны 1C</td><td><code>\\osnova.local\fs\IT\MyAppAdmin</code></td></tr>
+          <tr><td>Yandex token-файл</td><td><code>\\osnova.local\fs\IT\MyAppAdmin\API_yandex360.txt</code></td></tr>
+          <tr><td>Список принтеров</td><td><code>\\osnova.local\fs\IT\MyAppAdmin\printers.json</code></td></tr>
+        </tbody>
+      </table>
+      <div class="callout">Пути можно изменить в настройках. Секреты из настроек сохраняются локально через Windows DPAPI и не должны переноситься копированием чужого <code>config.json</code>.</div>
+      <div class="callout">При запуске EXE показывает анимированную сетевую заставку со сканирующим лучом, сетевыми искрами, glow-слоями и бегущими сигналами. Служебные проверки Windows запускаются скрыто, поэтому черные консольные окна появляться не должны.</div>
+    </section>
+
+    <section>
+      <h2>Первая безопасная проверка</h2>
+      <ul class="checklist">
+        <li>В разделе «Поиск AD» найдите тестового пользователя и убедитесь, что чтение каталога работает.</li>
+        <li>В «Почта Yandex» загрузите одну организацию и сохраните выборку кнопкой «Сохранить в Excel».</li>
+        <li>В «Принтеры» сначала используйте предпросмотр и проверенный тестовый МФУ.</li>
+        <li>Создание AD-пользователя сначала выполните в тестовой OU и без файловых операций.</li>
+        <li>Проверьте, что административные группы отсутствуют в выбранных группах.</li>
+      </ul>
+      <div class="callout danger"><b>Создаваемого сотрудника нельзя включить в административную группу.</b> Приложение блокирует такие группы по имени, SID/RID, <code>adminCount=1</code> и вложенному членству. Если старая сборка показывает успешное включение в «Администраторы» или «Администраторы домена», немедленно прекратите её использование и запустите актуальную версию.</div>
+    </section>
+
+    <section>
+      <h2>Где хранится локальная конфигурация</h2>
+      <p>При первом запуске создаются:</p>
+      <table>
+        <tbody>
+          <tr><td>Настройки</td><td><code>%APPDATA%\MyAppAdmin\config.json</code></td></tr>
+          <tr><td>Журнал аудита</td><td><code>%APPDATA%\MyAppAdmin\audit.db</code></td></tr>
+          <tr><td>Локальные принтеры</td><td><code>%APPDATA%\MyAppAdmin\printers.local.json</code></td></tr>
+        </tbody>
+      </table>
+      <p>Пароли AD-read, Kyocera и SMB в JSON выглядят как <code>dpapi:v1:...</code>. Это нормально: значение зашифровано для Windows-профиля, в котором оно было сохранено.</p>
+    </section>
+
+    <section>
+      <h2>Если что-то не работает</h2>
+      <table>
+        <thead><tr><th>Симптом</th><th>Что проверить</th></tr></thead>
+        <tbody>
+          <tr><td>Нет раздела «Настройки»</td><td>Текущий Windows-пользователь не определяется как Domain Admins. Перезапустите приложение под нужной доменной учетной записью.</td></tr>
+          <tr><td>AD не загружается</td><td><code>ad_ldap_server</code>, порт 636, <code>base_dn</code>, учетную запись чтения и сетевую доступность контроллера домена.</td></tr>
+          <tr><td>Общий путь недоступен</td><td>Откройте UNC-путь в Проводнике под тем же Windows-пользователем. Диалог AD-авторизации не меняет права процесса на файлы.</td></tr>
+          <tr><td>Yandex не показывает организации</td><td>Путь к token-файлу, формат файла, org_id и наличие OAuth token.</td></tr>
+          <tr><td>Принтер не отвечает</td><td>IP, питание, маршрутизацию и TCP 80/443. Операция автоматически прекращается через 180 секунд.</td></tr>
+          <tr><td>Excel не сохраняется</td><td>Права на выбранную папку и отсутствие уже открытого файла с тем же именем.</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    MyAppAdmin 0.16.7 · внутренняя инструкция OSNOVA · обновлено 18 июня 2026
+  </footer>
+</body>
+</html>

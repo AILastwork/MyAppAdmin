@@ -1,0 +1,51 @@
+# Python / virtualenv
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+
+# Test and tool caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pycache_tmp/
+.tmp_*/
+pytest-cache-files-*/
+runtime_test/
+tmp_*.db
+
+# Build artifacts
+build/
+dist/
+*.spec.tmp
+
+# Internal history and local-only reference material
+legacy_web_reference/
+PLAN.md
+NEXT_SESSION_CONTEXT.md
+docs/
+mockups/
+scripts/
+
+# Local configuration and secrets
+API_yandex360.txt
+printers.json
+legacy_web_reference/reference_code/yandex_api/*.py
+*.local.json
+config.json
+audit.db
+*.db
+
+# Kyocera diagnostic outputs and captured printer data
+kyocera_*.html
+kyocera_*_payload*.txt
+kyocera_last_add_payload.txt
+kyocera_diagnostics/
+
+# Local OS/editor noise
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
