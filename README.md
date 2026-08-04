@@ -88,6 +88,15 @@ python -m app.main
 
 Готовый переносимый файл: `dist\MyAppAdmin.exe`. Python на целевом 64-битном Windows-хосте не требуется. В EXE не включаются локальный `config.json`, Yandex token-файлы, `printers.json` и сохраненные пароли; приложение использует настройки текущего пользователя из `%APPDATA%\MyAppAdmin`.
 
+## Готовая сборка
+
+Portable ZIP для Windows x64:
+
+- [`release-assets/MyAppAdmin-0.16.7-win64.zip`](release-assets/MyAppAdmin-0.16.7-win64.zip)
+- [`release-assets/MyAppAdmin-0.16.7-win64.zip.sha256`](release-assets/MyAppAdmin-0.16.7-win64.zip.sha256)
+
+Внутри архива: `MyAppAdmin.exe`, `MyAppAdmin_First_Run.html` и `SHA256SUMS.txt`. Установка Python на рабочем месте не требуется.
+
 Раздел "Настройки" доступен только текущему Windows-пользователю из Domain Admins. В нем можно менять:
 
 - домен и `base_dn`;

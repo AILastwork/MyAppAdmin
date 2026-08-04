@@ -20,6 +20,7 @@ tmp_*.db
 build/
 dist/
 *.spec.tmp
+release-assets/*/
 
 # Internal history and local-only reference material
 legacy_web_reference/
