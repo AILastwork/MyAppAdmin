@@ -357,6 +357,8 @@ python -m app.main</pre>
           <li><code>base_dn</code> - LDAP DN, например DC=osnova,DC=local.</li>
           <li><code>ad_ldap_server</code> - LDAPS-сервер или доменное имя, например osnova.local.</li>
           <li><code>ad_ldaps_port</code> - порт LDAPS, обычно 636.</li>
+          <li><code>ad_tls_verify</code> - проверка сертификата контроллера домена (по умолчанию включена). Отключение позволяет перехватить пароль Domain Admins в сети; использовать только для диагностики. При ошибке проверки укажите в <code>ad_ldap_server</code> полное имя DC, на которое выпущен сертификат, или задайте <code>ad_tls_ca_file</code>.</li>
+          <li><code>ad_tls_ca_file</code> - PEM-файл корневого ЦС домена; пусто - используется хранилище сертификатов Windows.</li>
           <li><code>ad_read_user</code> и <code>ad_read_password</code> - учетная запись для чтения AD; пароль сохраняется в <code>config.json</code> через Windows DPAPI.</li>
           <li><code>ad_search_limit</code> - максимальное количество строк в поиске AD.</li>
           <li><code>app_theme</code> - тема интерфейса: dark или matrix.</li>

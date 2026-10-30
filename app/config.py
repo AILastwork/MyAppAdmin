@@ -69,6 +69,11 @@ class AppConfig:
     app_theme: str = "dark"
     ad_ldap_server: str = "osnova.local"
     ad_ldaps_port: str = "636"
+    # Проверка сертификата LDAPS. Без неё пароль Domain Admins, который вводится
+    # при каждой операции, уходит любому, кто встал посередине (ARP/DNS-спуфинг).
+    ad_tls_verify: bool = True
+    # PEM-файл корневого сертификата доменного ЦС. Пусто - хранилище Windows.
+    ad_tls_ca_file: str = ""
     ad_read_user: str = ""
     ad_read_password: str = ""
     ad_search_limit: str = "50"

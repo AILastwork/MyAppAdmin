@@ -536,8 +536,16 @@ def _server(config: AppConfig) -> Any:
     if not host:
         raise RuntimeError("Не задан ad_ldap_server.")
     port = int(str(config.ad_ldaps_port or "636").strip() or "636")
-    tls = Tls(validate=ssl.CERT_NONE, version=ssl.PROTOCOL_TLS_CLIENT)
-    return Server(host, port=port, use_ssl=True, tls=tls, get_info=ALL, connect_timeout=8)
+    return Server(host, port=port, use_ssl=True, tls=_tls(config), get_info=ALL, connect_timeout=8)
+
+
+def _tls(config: AppConfig) -> Any:
+    if not config.ad_tls_verify:
+        return Tls(validate=ssl.CERT_NONE, version=ssl.PROTOCOL_TLS_CLIENT)
+    # Без ca_certs_file ldap3 берёт системное хранилище (load_default_certs),
+    # куда на доменной машине групповой политикой уже раздан корневой ЦС AD.
+    ca_file = (config.ad_tls_ca_file or "").strip() or None
+    return Tls(validate=ssl.CERT_REQUIRED, version=ssl.PROTOCOL_TLS_CLIENT, ca_certs_file=ca_file)
 
 
 def _find_bound_user_dn(conn: Any, config: AppConfig, username: str, bind_user: str) -> str:

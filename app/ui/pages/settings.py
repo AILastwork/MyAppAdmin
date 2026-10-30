@@ -21,7 +21,7 @@ from app.ui.widgets import button, page_title
 
 
 LIST_FIELDS = {"ad_search_visible_columns", "yandex_visible_columns"}
-BOOL_FIELDS = {"service_mode_enabled"}
+BOOL_FIELDS = {"service_mode_enabled", "ad_tls_verify"}
 PASSWORD_FIELDS = {"ad_read_password", "kyocera_admin_password", "kyocera_smb_password"}
 SECTION_MANAGED_FIELDS = {
     "userfolder_root",
@@ -41,6 +41,8 @@ FIELD_HINTS = {
     "app_theme": "dark",
     "ad_ldap_server": "osnova.local или dc01.osnova.local",
     "ad_ldaps_port": "636",
+    "ad_tls_verify": "true - проверять сертификат LDAPS (отключать только для диагностики)",
+    "ad_tls_ca_file": r"пусто - хранилище Windows; или путь к PEM корневого ЦС домена",
     "ad_read_user": r"OSNOVA\read_user или read_user@osnova.local",
     "ad_read_password": "Пароль учетной записи для чтения AD",
     "ad_search_limit": "50",
